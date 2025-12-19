@@ -7,4 +7,5 @@ geopandas
 osmnx
 joblib
 requests
+plotly>=5.18.0
 rich
