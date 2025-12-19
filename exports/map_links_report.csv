@@ -1,0 +1,8 @@
+map_name,file_path,description
+sensor_markers,../maps/sensor_markers_map.html,Interactive sensor locations with pollution levels
+pm25_heatmap,../maps/pm25_heatmap_map.html,PM2.5 concentration heatmap
+pm10_heatmap,../maps/pm10_heatmap_map.html,PM10 concentration heatmap
+no2_heatmap,../maps/no2_heatmap_map.html,NO2 concentration heatmap
+risk_zones,../maps/risk_zones_map.html,Pollution risk zones with colored circles
+time_animation,../maps/time_animation_map.html,Time-based pollution patterns
+comprehensive_dashboard,../maps/comprehensive_dashboard_map.html,Comprehensive dashboard with all layers

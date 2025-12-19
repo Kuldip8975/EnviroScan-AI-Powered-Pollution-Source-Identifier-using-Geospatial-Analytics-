@@ -1,0 +1,75 @@
+{
+  "best_model": {
+    "name": "Random Forest",
+    "accuracy": 1.0,
+    "parameters": {
+      "max_depth": 10,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "n_estimators": 100
+    }
+  },
+  "all_models": {
+    "Random Forest": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0
+    },
+    "XGBoost": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0
+    },
+    "Decision Tree": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0
+    }
+  },
+  "dataset_info": {
+    "total_samples": 5768,
+    "training_samples": 4614,
+    "testing_samples": 1154,
+    "features_count": 31,
+    "classes_count": 3,
+    "class_distribution": {
+      "Residential": 2884,
+      "Traffic": 1442,
+      "Commercial": 1442
+    }
+  },
+  "feature_analysis": {
+    "top_features": {
+      "Random Forest": {
+        "commercial_area": 0.15757148873821938,
+        "industrial_area": 0.15294160932872672,
+        "residential_area": 0.14737237132025846,
+        "road_length_km": 0.0613333364804448,
+        "wind_speed_ms": 0.06011609972792586
+      },
+      "XGBoost": {
+        "industrial_area": 0.3242071568965912,
+        "residential_area": 0.23680736124515533,
+        "road_edges": 0.16028524935245514,
+        "commercial_area": 0.14617790281772614,
+        "temp_humidity_interaction": 0.13044877350330353
+      },
+      "Decision Tree": {
+        "industrial_area": 0.6707388016288746,
+        "residential_area": 0.3292611983711249,
+        "road_length_km": 6.106226635438604e-16,
+        "green_space": 0.0,
+        "building_density": 0.0
+      }
+    }
+  }
+}

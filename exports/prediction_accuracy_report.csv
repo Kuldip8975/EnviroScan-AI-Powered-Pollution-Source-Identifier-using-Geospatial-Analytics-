@@ -1,0 +1,9 @@
+sensor_name,area_type,predicted_source,PM2.5,confidence,reading_count
+Aundh_Residential,residential,Residential,28.19136094674556,1.0,169
+Hadapsar_Industrial,industrial,Traffic,63.145384615384614,0.9998873786060872,169
+Hinjewadi_Industrial,industrial,Traffic,58.64153846153846,0.9996449704142012,169
+Katraj_Suburban,suburban,Residential,33.17792899408284,0.9997633136094675,169
+Kothrud_Residential,residential,Residential,27.34621301775148,1.0,169
+Pune_City_Center,urban,Residential,33.38195266272189,0.9997041420118342,169
+Shivajinagar_Commercial,commercial,Commercial,41.667810650887574,0.9998053198030404,169
+Viman_Nagar_Commercial,commercial,Commercial,40.91994082840237,0.9995629116111544,169

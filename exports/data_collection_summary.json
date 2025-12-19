@@ -1,0 +1,35 @@
+{
+  "dataset_info": {
+    "total_records": 5768,
+    "total_columns": 31,
+    "date_range_start": "2025-09-30 10:08",
+    "date_range_end": "2025-10-30 10:08",
+    "sensors_count": 8,
+    "file_size_mb": 1.0560798645019531
+  },
+  "pollution_summary": {
+    "avg_pm25": 40.76962898751733,
+    "max_pm25": 127.91,
+    "avg_pm10": 68.93127947295423,
+    "max_pm10": 207.43,
+    "avg_no2": 30.15135575589459,
+    "max_no2": 96.58
+  },
+  "sensor_summary": {
+    "Pune_City_Center": 721,
+    "Hinjewadi_Industrial": 721,
+    "Kothrud_Residential": 721,
+    "Hadapsar_Industrial": 721,
+    "Viman_Nagar_Commercial": 721,
+    "Aundh_Residential": 721,
+    "Shivajinagar_Commercial": 721,
+    "Katraj_Suburban": 721
+  },
+  "area_type_summary": {
+    "industrial": 1442,
+    "commercial": 1442,
+    "residential": 1442,
+    "urban": 721,
+    "suburban": 721
+  }
+}

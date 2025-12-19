@@ -1,0 +1,9 @@
+sensor_name,latitude,longitude,area_type,pm25_mean,pm25_max,pm25_std,pm10_mean,no2_mean,temp_mean,wind_mean,risk_level,risk_color,last_update
+Aundh_Residential,18.56,73.81,residential,28.19,50.43,7.83,45.69,17.96,24.0,2.9,Moderate,yellow,2025-10-30 10:08:36.680470
+Hadapsar_Industrial,18.5,73.94,industrial,63.15,110.49,17.26,102.49,46.98,24.0,2.6,Hazardous,red,2025-10-30 10:08:36.680470
+Hinjewadi_Industrial,18.59,73.74,industrial,58.64,102.22,16.48,102.68,45.88,23.9,3.0,Hazardous,red,2025-10-30 10:08:36.680470
+Katraj_Suburban,18.45,73.87,suburban,33.18,60.88,9.53,56.68,22.93,23.5,2.7,Moderate,yellow,2025-10-30 10:08:36.680470
+Kothrud_Residential,18.51,73.81,residential,27.35,52.83,8.82,46.02,18.1,23.9,3.0,Moderate,yellow,2025-10-30 10:08:36.680470
+Pune_City_Center,18.52,73.86,urban,33.38,61.83,9.96,56.6,22.96,24.1,2.8,Moderate,yellow,2025-10-30 10:08:36.680470
+Shivajinagar_Commercial,18.53,73.84,commercial,41.67,73.39,11.83,68.44,32.66,24.1,2.8,Unhealthy,orange,2025-10-30 10:08:36.680470
+Viman_Nagar_Commercial,18.57,73.91,commercial,40.92,84.26,12.16,71.26,32.14,24.0,2.8,Unhealthy,orange,2025-10-30 10:08:36.680470

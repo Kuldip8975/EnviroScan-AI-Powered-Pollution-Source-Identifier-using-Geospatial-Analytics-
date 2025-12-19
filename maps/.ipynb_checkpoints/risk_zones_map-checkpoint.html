@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ff7351818e02dd93f6f3233f3620fb56 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+    <h3 align="center" style="font-size:20px; margin-top:10px;">
+        <b>⚠️ Pollution Risk Zones - Pune</b>
+    </h3>
+    
+    
+            <div class="folium-map" id="map_ff7351818e02dd93f6f3233f3620fb56" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ff7351818e02dd93f6f3233f3620fb56 = L.map(
+                "map_ff7351818e02dd93f6f3233f3620fb56",
+                {
+                    center: [18.5204, 73.8567],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": true,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+
+            
+
+        
+    
+            var tile_layer_5e8b79bced12d104a774f620be52d9c8 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5e8b79bced12d104a774f620be52d9c8.addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var tile_layer_0a9924f8f3e40ba615a87b8f0c8af545 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0a9924f8f3e40ba615a87b8f0c8af545.addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var tile_layer_4bf6f6bb95683d3f7f0d300d6f94bf26 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors \u00a9 CARTO",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4bf6f6bb95683d3f7f0d300d6f94bf26.addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var tile_layer_a0e15579b85251622f48e0dd97217e7a = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors \u00a9 CARTO",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a0e15579b85251622f48e0dd97217e7a.addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var tile_layer_e813714cb0df7fddc1c3603e2340af6c = L.tileLayer(
+                "https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Map tiles by Stamen Design, CC BY 3.0 \u2014 Map data \u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e813714cb0df7fddc1c3603e2340af6c.addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var tile_layer_d790fed73758d439bcee0c8fec3ebb20 = L.tileLayer(
+                "https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Map tiles by Stamen Design, CC BY 3.0 \u2014 Map data \u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d790fed73758d439bcee0c8fec3ebb20.addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var layer_control_37e2788693331e91bba378597c4ff38a_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_5e8b79bced12d104a774f620be52d9c8,
+                    "OpenStreetMap" : tile_layer_0a9924f8f3e40ba615a87b8f0c8af545,
+                    "CartoDB Positron" : tile_layer_4bf6f6bb95683d3f7f0d300d6f94bf26,
+                    "CartoDB Dark Matter" : tile_layer_a0e15579b85251622f48e0dd97217e7a,
+                    "Stamen Terrain" : tile_layer_e813714cb0df7fddc1c3603e2340af6c,
+                    "Stamen Toner" : tile_layer_d790fed73758d439bcee0c8fec3ebb20,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_37e2788693331e91bba378597c4ff38a = L.control.layers(
+                layer_control_37e2788693331e91bba378597c4ff38a_layers.base_layers,
+                layer_control_37e2788693331e91bba378597c4ff38a_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var tile_layer_8fb3ccf5d3dcfd2a193d9e9fe695e4ca = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_497320d62fb8e6bc59d32b8bb64d13e5 = new L.Control.MiniMap(
+                tile_layer_8fb3ccf5d3dcfd2a193d9e9fe695e4ca,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": false,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_ff7351818e02dd93f6f3233f3620fb56.addControl(mini_map_497320d62fb8e6bc59d32b8bb64d13e5);
+        
+    
+            var measure_control_e72e41e6af06fbfe0ebf724fc878e93e = new L.Control.Measure(
+                {
+  "position": "topright",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_ff7351818e02dd93f6f3233f3620fb56.addControl(measure_control_e72e41e6af06fbfe0ebf724fc878e93e);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var circle_6bce8b00892efe8a31406afe05c71dba = L.circle(
+                [18.56, 73.81],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 225.52, "stroke": true, "weight": 2}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+        var popup_3864b3f65fbe93d3c0255e5ffb5480b1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_14ad28870afc3925d81e5c0d98381119 = $(`<div id="html_14ad28870afc3925d81e5c0d98381119" style="width: 100.0%; height: 100.0%;">             <b>Aundh_Residential</b><br>             Risk: Moderate<br>             PM2.5: 28.19 μg/m³<br>             Area: residential             </div>`)[0];
+                popup_3864b3f65fbe93d3c0255e5ffb5480b1.setContent(html_14ad28870afc3925d81e5c0d98381119);
+            
+        
+
+        circle_6bce8b00892efe8a31406afe05c71dba.bindPopup(popup_3864b3f65fbe93d3c0255e5ffb5480b1)
+        ;
+
+        
+    
+    
+            var marker_19d5dd727a7ae60c3cfd86dbabd9959c = L.marker(
+                [18.56, 73.81],
+                {
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var icon_ae89a50abf307aeab62048ebc0ba99b2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "yellow",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_70649175feae76cf9b96ae0ef84e8c38 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_16c0997d778cae43071dbae82a7d61e8 = $(`<div id="html_16c0997d778cae43071dbae82a7d61e8" style="width: 100.0%; height: 100.0%;">Aundh_Residential</div>`)[0];
+                popup_70649175feae76cf9b96ae0ef84e8c38.setContent(html_16c0997d778cae43071dbae82a7d61e8);
+            
+        
+
+        marker_19d5dd727a7ae60c3cfd86dbabd9959c.bindPopup(popup_70649175feae76cf9b96ae0ef84e8c38)
+        ;
+
+        
+    
+    
+                marker_19d5dd727a7ae60c3cfd86dbabd9959c.setIcon(icon_ae89a50abf307aeab62048ebc0ba99b2);
+            
+    
+            var circle_039a31145092176fc98e97acdcb7aa03 = L.circle(
+                [18.5, 73.94],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 505.2, "stroke": true, "weight": 2}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+        var popup_5f881c3087b0422d5dec0932d54f9450 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d407bb8353e22ca131e07b7ae4b72b68 = $(`<div id="html_d407bb8353e22ca131e07b7ae4b72b68" style="width: 100.0%; height: 100.0%;">             <b>Hadapsar_Industrial</b><br>             Risk: Hazardous<br>             PM2.5: 63.15 μg/m³<br>             Area: industrial             </div>`)[0];
+                popup_5f881c3087b0422d5dec0932d54f9450.setContent(html_d407bb8353e22ca131e07b7ae4b72b68);
+            
+        
+
+        circle_039a31145092176fc98e97acdcb7aa03.bindPopup(popup_5f881c3087b0422d5dec0932d54f9450)
+        ;
+
+        
+    
+    
+            var marker_f4ce0dd5581c18298d19e89acd58d4bd = L.marker(
+                [18.5, 73.94],
+                {
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var icon_a6bde10a21416fbc782cdce2deefe7dc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e0ebc042ea0dcbdf559c77054ff5b7cf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9a6952ba51d2499c3daa27e492b5ba0a = $(`<div id="html_9a6952ba51d2499c3daa27e492b5ba0a" style="width: 100.0%; height: 100.0%;">Hadapsar_Industrial</div>`)[0];
+                popup_e0ebc042ea0dcbdf559c77054ff5b7cf.setContent(html_9a6952ba51d2499c3daa27e492b5ba0a);
+            
+        
+
+        marker_f4ce0dd5581c18298d19e89acd58d4bd.bindPopup(popup_e0ebc042ea0dcbdf559c77054ff5b7cf)
+        ;
+
+        
+    
+    
+                marker_f4ce0dd5581c18298d19e89acd58d4bd.setIcon(icon_a6bde10a21416fbc782cdce2deefe7dc);
+            
+    
+            var circle_942310216f345a9c6c8bca463fb1b33e = L.circle(
+                [18.59, 73.74],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 469.12, "stroke": true, "weight": 2}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+        var popup_facd117fd6542aefc90cdb67f668232f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_523285bbe4f284d123ee526d454e263c = $(`<div id="html_523285bbe4f284d123ee526d454e263c" style="width: 100.0%; height: 100.0%;">             <b>Hinjewadi_Industrial</b><br>             Risk: Hazardous<br>             PM2.5: 58.64 μg/m³<br>             Area: industrial             </div>`)[0];
+                popup_facd117fd6542aefc90cdb67f668232f.setContent(html_523285bbe4f284d123ee526d454e263c);
+            
+        
+
+        circle_942310216f345a9c6c8bca463fb1b33e.bindPopup(popup_facd117fd6542aefc90cdb67f668232f)
+        ;
+
+        
+    
+    
+            var marker_1179d22ccccb02e3dd69fced4ddc1a05 = L.marker(
+                [18.59, 73.74],
+                {
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var icon_6fb41e628b74506e84e884dc4a1f5158 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6c9d6b580bbab4a5dae2ec9d0aa9f3c0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fd09cdbd6d0d43fdcf81d7d30487ebe7 = $(`<div id="html_fd09cdbd6d0d43fdcf81d7d30487ebe7" style="width: 100.0%; height: 100.0%;">Hinjewadi_Industrial</div>`)[0];
+                popup_6c9d6b580bbab4a5dae2ec9d0aa9f3c0.setContent(html_fd09cdbd6d0d43fdcf81d7d30487ebe7);
+            
+        
+
+        marker_1179d22ccccb02e3dd69fced4ddc1a05.bindPopup(popup_6c9d6b580bbab4a5dae2ec9d0aa9f3c0)
+        ;
+
+        
+    
+    
+                marker_1179d22ccccb02e3dd69fced4ddc1a05.setIcon(icon_6fb41e628b74506e84e884dc4a1f5158);
+            
+    
+            var circle_978cf8d819bdcbf14965409bca247b6c = L.circle(
+                [18.45, 73.87],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 265.44, "stroke": true, "weight": 2}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+        var popup_92e35550fcde5499f555101724f4d640 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9c85a7273daa6582e7585d7f45088be6 = $(`<div id="html_9c85a7273daa6582e7585d7f45088be6" style="width: 100.0%; height: 100.0%;">             <b>Katraj_Suburban</b><br>             Risk: Moderate<br>             PM2.5: 33.18 μg/m³<br>             Area: suburban             </div>`)[0];
+                popup_92e35550fcde5499f555101724f4d640.setContent(html_9c85a7273daa6582e7585d7f45088be6);
+            
+        
+
+        circle_978cf8d819bdcbf14965409bca247b6c.bindPopup(popup_92e35550fcde5499f555101724f4d640)
+        ;
+
+        
+    
+    
+            var marker_1fe8bfba060824569b7c234507ab080d = L.marker(
+                [18.45, 73.87],
+                {
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var icon_c7fc4bf88909823f5aa15c3476d3e4ff = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "yellow",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cb9febf29a2d4f62b95249974e28e7cf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_945c311c10df7d9043b233fedd2df726 = $(`<div id="html_945c311c10df7d9043b233fedd2df726" style="width: 100.0%; height: 100.0%;">Katraj_Suburban</div>`)[0];
+                popup_cb9febf29a2d4f62b95249974e28e7cf.setContent(html_945c311c10df7d9043b233fedd2df726);
+            
+        
+
+        marker_1fe8bfba060824569b7c234507ab080d.bindPopup(popup_cb9febf29a2d4f62b95249974e28e7cf)
+        ;
+
+        
+    
+    
+                marker_1fe8bfba060824569b7c234507ab080d.setIcon(icon_c7fc4bf88909823f5aa15c3476d3e4ff);
+            
+    
+            var circle_ecb9f67ad2579bd9f373bfce55d09ecf = L.circle(
+                [18.51, 73.81],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 218.8, "stroke": true, "weight": 2}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+        var popup_b32705cd3b5536bc912651b915e896ae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_277f3dd00795de1380e7e170b05d5414 = $(`<div id="html_277f3dd00795de1380e7e170b05d5414" style="width: 100.0%; height: 100.0%;">             <b>Kothrud_Residential</b><br>             Risk: Moderate<br>             PM2.5: 27.35 μg/m³<br>             Area: residential             </div>`)[0];
+                popup_b32705cd3b5536bc912651b915e896ae.setContent(html_277f3dd00795de1380e7e170b05d5414);
+            
+        
+
+        circle_ecb9f67ad2579bd9f373bfce55d09ecf.bindPopup(popup_b32705cd3b5536bc912651b915e896ae)
+        ;
+
+        
+    
+    
+            var marker_fa61e4b1298220dc046736af24543e5c = L.marker(
+                [18.51, 73.81],
+                {
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var icon_a9099e734ab56381b3b27ca92399f49e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "yellow",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5dcab0f3838d4951fcc83d3653610b91 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_045e5db8638c534d10879572be135aec = $(`<div id="html_045e5db8638c534d10879572be135aec" style="width: 100.0%; height: 100.0%;">Kothrud_Residential</div>`)[0];
+                popup_5dcab0f3838d4951fcc83d3653610b91.setContent(html_045e5db8638c534d10879572be135aec);
+            
+        
+
+        marker_fa61e4b1298220dc046736af24543e5c.bindPopup(popup_5dcab0f3838d4951fcc83d3653610b91)
+        ;
+
+        
+    
+    
+                marker_fa61e4b1298220dc046736af24543e5c.setIcon(icon_a9099e734ab56381b3b27ca92399f49e);
+            
+    
+            var circle_35c7729a46f06d1ef06c702ebbc4eccd = L.circle(
+                [18.52, 73.86],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 267.04, "stroke": true, "weight": 2}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+        var popup_5c7074f1a26394d8ee4718be1791adb9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c1aa497f17215589b8e333f750bf35d0 = $(`<div id="html_c1aa497f17215589b8e333f750bf35d0" style="width: 100.0%; height: 100.0%;">             <b>Pune_City_Center</b><br>             Risk: Moderate<br>             PM2.5: 33.38 μg/m³<br>             Area: urban             </div>`)[0];
+                popup_5c7074f1a26394d8ee4718be1791adb9.setContent(html_c1aa497f17215589b8e333f750bf35d0);
+            
+        
+
+        circle_35c7729a46f06d1ef06c702ebbc4eccd.bindPopup(popup_5c7074f1a26394d8ee4718be1791adb9)
+        ;
+
+        
+    
+    
+            var marker_6980642cf22c47249d59ac74bebe6708 = L.marker(
+                [18.52, 73.86],
+                {
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var icon_54883bea588125c4d8efba7db90f06b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "yellow",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c43a909cff684c26b6e310c50748ef14 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_034632556a1eabd01dcbc5c4ad8884a9 = $(`<div id="html_034632556a1eabd01dcbc5c4ad8884a9" style="width: 100.0%; height: 100.0%;">Pune_City_Center</div>`)[0];
+                popup_c43a909cff684c26b6e310c50748ef14.setContent(html_034632556a1eabd01dcbc5c4ad8884a9);
+            
+        
+
+        marker_6980642cf22c47249d59ac74bebe6708.bindPopup(popup_c43a909cff684c26b6e310c50748ef14)
+        ;
+
+        
+    
+    
+                marker_6980642cf22c47249d59ac74bebe6708.setIcon(icon_54883bea588125c4d8efba7db90f06b5);
+            
+    
+            var circle_c13804632f2adf156e4e51cc9174b7be = L.circle(
+                [18.53, 73.84],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 333.36, "stroke": true, "weight": 2}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+        var popup_1dc6b6f309b0ea9600cc701b7b751794 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e95ccdffdb2ae9273eddd48c1e349438 = $(`<div id="html_e95ccdffdb2ae9273eddd48c1e349438" style="width: 100.0%; height: 100.0%;">             <b>Shivajinagar_Commercial</b><br>             Risk: Unhealthy<br>             PM2.5: 41.67 μg/m³<br>             Area: commercial             </div>`)[0];
+                popup_1dc6b6f309b0ea9600cc701b7b751794.setContent(html_e95ccdffdb2ae9273eddd48c1e349438);
+            
+        
+
+        circle_c13804632f2adf156e4e51cc9174b7be.bindPopup(popup_1dc6b6f309b0ea9600cc701b7b751794)
+        ;
+
+        
+    
+    
+            var marker_84cd9948870d7e5a6659d68c1937bb10 = L.marker(
+                [18.53, 73.84],
+                {
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var icon_2e460540b032529dfcf9a3191a2f1c90 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_47019ecd8799b3060d48c595190f9d8f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e0e186b10c24d28a61f6ae127315210c = $(`<div id="html_e0e186b10c24d28a61f6ae127315210c" style="width: 100.0%; height: 100.0%;">Shivajinagar_Commercial</div>`)[0];
+                popup_47019ecd8799b3060d48c595190f9d8f.setContent(html_e0e186b10c24d28a61f6ae127315210c);
+            
+        
+
+        marker_84cd9948870d7e5a6659d68c1937bb10.bindPopup(popup_47019ecd8799b3060d48c595190f9d8f)
+        ;
+
+        
+    
+    
+                marker_84cd9948870d7e5a6659d68c1937bb10.setIcon(icon_2e460540b032529dfcf9a3191a2f1c90);
+            
+    
+            var circle_9f76dfab2964cdd8fea1cfe34aa5a707 = L.circle(
+                [18.57, 73.91],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 327.36, "stroke": true, "weight": 2}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+        var popup_170e94342121b805e3bbfa451603a58e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fa9433be12a60f3a6d62e27131d87b2c = $(`<div id="html_fa9433be12a60f3a6d62e27131d87b2c" style="width: 100.0%; height: 100.0%;">             <b>Viman_Nagar_Commercial</b><br>             Risk: Unhealthy<br>             PM2.5: 40.92 μg/m³<br>             Area: commercial             </div>`)[0];
+                popup_170e94342121b805e3bbfa451603a58e.setContent(html_fa9433be12a60f3a6d62e27131d87b2c);
+            
+        
+
+        circle_9f76dfab2964cdd8fea1cfe34aa5a707.bindPopup(popup_170e94342121b805e3bbfa451603a58e)
+        ;
+
+        
+    
+    
+            var marker_a8623082443a509bdaf96c4e36472074 = L.marker(
+                [18.57, 73.91],
+                {
+}
+            ).addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+        
+    
+            var icon_d04233a87761ee1bc20cc3008a636bc7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_28433b255a62606aaa666cbf00e8bbd5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_220174e66eee5dc1442360f500259b3d = $(`<div id="html_220174e66eee5dc1442360f500259b3d" style="width: 100.0%; height: 100.0%;">Viman_Nagar_Commercial</div>`)[0];
+                popup_28433b255a62606aaa666cbf00e8bbd5.setContent(html_220174e66eee5dc1442360f500259b3d);
+            
+        
+
+        marker_a8623082443a509bdaf96c4e36472074.bindPopup(popup_28433b255a62606aaa666cbf00e8bbd5)
+        ;
+
+        
+    
+    
+                marker_a8623082443a509bdaf96c4e36472074.setIcon(icon_d04233a87761ee1bc20cc3008a636bc7);
+            
+    
+    var color_map_2718b1613d6206893ded35eb5a11c36f = {};
+
+    
+    color_map_2718b1613d6206893ded35eb5a11c36f.color = d3.scale.threshold()
+              .domain([0.0, 0.30060120240480964, 0.6012024048096193, 0.9018036072144289, 1.2024048096192386, 1.503006012024048, 1.8036072144288577, 2.1042084168336674, 2.404809619238477, 2.7054108216432864, 3.006012024048096, 3.306613226452906, 3.6072144288577155, 3.907815631262525, 4.208416833667335, 4.509018036072145, 4.809619238476954, 5.110220440881764, 5.410821643286573, 5.7114228456913825, 6.012024048096192, 6.312625250501002, 6.613226452905812, 6.913827655310621, 7.214428857715431, 7.515030060120241, 7.81563126252505, 8.11623246492986, 8.41683366733467, 8.71743486973948, 9.01803607214429, 9.318637274549099, 9.619238476953909, 9.919839679358718, 10.220440881763528, 10.521042084168336, 10.821643286573146, 11.122244488977955, 11.422845691382765, 11.723446893787575, 12.024048096192384, 12.324649298597194, 12.625250501002004, 12.925851703406813, 13.226452905811623, 13.527054108216433, 13.827655310621243, 14.128256513026052, 14.428857715430862, 14.729458917835672, 15.030060120240481, 15.330661322645291, 15.6312625250501, 15.93186372745491, 16.23246492985972, 16.53306613226453, 16.83366733466934, 17.13426853707415, 17.43486973947896, 17.73547094188377, 18.03607214428858, 18.336673346693388, 18.637274549098198, 18.937875751503007, 19.238476953907817, 19.539078156312627, 19.839679358717436, 20.140280561122246, 20.440881763527056, 20.741482965931862, 21.04208416833667, 21.34268537074148, 21.64328657314629, 21.9438877755511, 22.24448897795591, 22.54509018036072, 22.84569138276553, 23.14629258517034, 23.44689378757515, 23.74749498997996, 24.04809619238477, 24.34869739478958, 24.649298597194388, 24.949899799599198, 25.250501002004007, 25.551102204408817, 25.851703406813627, 26.152304609218437, 26.452905811623246, 26.753507014028056, 27.054108216432866, 27.354709418837675, 27.655310621242485, 27.955911823647295, 28.256513026052104, 28.557114228456914, 28.857715430861724, 29.158316633266534, 29.458917835671343, 29.759519038076153, 30.060120240480963, 30.360721442885772, 30.661322645290582, 30.96192384769539, 31.2625250501002, 31.56312625250501, 31.86372745490982, 32.16432865731463, 32.46492985971944, 32.765531062124246, 33.06613226452906, 33.366733466933866, 33.66733466933868, 33.967935871743485, 34.2685370741483, 34.569138276553105, 34.86973947895792, 35.170340681362724, 35.47094188376754, 35.77154308617234, 36.07214428857716, 36.37274549098196, 36.673346693386776, 36.97394789579158, 37.274549098196395, 37.5751503006012, 37.875751503006015, 38.17635270541082, 38.476953907815634, 38.77755511022044, 39.078156312625254, 39.37875751503006, 39.67935871743487, 39.97995991983968, 40.28056112224449, 40.5811623246493, 40.88176352705411, 41.18236472945892, 41.482965931863724, 41.78356713426854, 42.08416833667334, 42.38476953907816, 42.68537074148296, 42.985971943887776, 43.28657314629258, 43.587174348697395, 43.8877755511022, 44.188376753507015, 44.48897795591182, 44.789579158316634, 45.09018036072144, 45.390781563126254, 45.69138276553106, 45.99198396793587, 46.29258517034068, 46.59318637274549, 46.8937875751503, 47.19438877755511, 47.49498997995992, 47.79559118236473, 48.09619238476954, 48.39679358717435, 48.69739478957916, 48.99799599198397, 49.298597194388776, 49.59919839679359, 49.899799599198396, 50.20040080160321, 50.501002004008015, 50.80160320641283, 51.102204408817634, 51.40280561122245, 51.703406813627254, 52.00400801603207, 52.30460921843687, 52.605210420841686, 52.90581162324649, 53.206412825651306, 53.50701402805611, 53.807615230460925, 54.10821643286573, 54.408817635270545, 54.70941883767535, 55.01002004008016, 55.31062124248497, 55.611222444889776, 55.91182364729459, 56.212424849699396, 56.51302605210421, 56.813627254509015, 57.11422845691383, 57.414829659318634, 57.71543086172345, 58.016032064128254, 58.31663326653307, 58.61723446893787, 58.91783567134269, 59.21843687374749, 59.519038076152306, 59.81963927855711, 60.120240480961925, 60.42084168336673, 60.721442885771545, 61.02204408817635, 61.322645290581164, 61.62324649298597, 61.92384769539078, 62.22444889779559, 62.5250501002004, 62.82565130260521, 63.12625250501002, 63.42685370741483, 63.72745490981964, 64.02805611222445, 64.32865731462925, 64.62925851703407, 64.92985971943888, 65.23046092184369, 65.53106212424849, 65.83166332665331, 66.13226452905812, 66.43286573146293, 66.73346693386773, 67.03406813627255, 67.33466933867736, 67.63527054108216, 67.93587174348697, 68.23647294589178, 68.5370741482966, 68.8376753507014, 69.13827655310621, 69.43887775551102, 69.73947895791584, 70.04008016032064, 70.34068136272545, 70.64128256513025, 70.94188376753507, 71.24248496993988, 71.54308617234469, 71.84368737474949, 72.14428857715431, 72.44488977955912, 72.74549098196393, 73.04609218436873, 73.34669338677355, 73.64729458917836, 73.94789579158316, 74.24849699398797, 74.54909819639279, 74.8496993987976, 75.1503006012024, 75.45090180360721, 75.75150300601203, 76.05210420841684, 76.35270541082164, 76.65330661322645, 76.95390781563127, 77.25450901803607, 77.55511022044088, 77.85571142284569, 78.15631262525051, 78.45691382765531, 78.75751503006012, 79.05811623246493, 79.35871743486975, 79.65931863727455, 79.95991983967936, 80.26052104208416, 80.56112224448898, 80.86172344689379, 81.1623246492986, 81.4629258517034, 81.76352705410822, 82.06412825651303, 82.36472945891784, 82.66533066132264, 82.96593186372745, 83.26653306613227, 83.56713426853707, 83.86773547094188, 84.16833667334669, 84.46893787575151, 84.76953907815631, 85.07014028056112, 85.37074148296593, 85.67134268537075, 85.97194388777555, 86.27254509018036, 86.57314629258516, 86.87374749498998, 87.17434869739479, 87.4749498997996, 87.7755511022044, 88.07615230460922, 88.37675350701403, 88.67735470941884, 88.97795591182364, 89.27855711422846, 89.57915831663327, 89.87975951903807, 90.18036072144288, 90.4809619238477, 90.78156312625251, 91.08216432865731, 91.38276553106212, 91.68336673346694, 91.98396793587175, 92.28456913827655, 92.58517034068136, 92.88577154308618, 93.18637274549098, 93.48697394789579, 93.7875751503006, 94.08817635270542, 94.38877755511022, 94.68937875751503, 94.98997995991984, 95.29058116232466, 95.59118236472946, 95.89178356713427, 96.19238476953907, 96.49298597194388, 96.7935871743487, 97.09418837675351, 97.39478957915831, 97.69539078156312, 97.99599198396794, 98.29659318637275, 98.59719438877755, 98.89779559118236, 99.19839679358718, 99.49899799599199, 99.79959919839679, 100.1002004008016, 100.40080160320642, 100.70140280561122, 101.00200400801603, 101.30260521042084, 101.60320641282566, 101.90380761523046, 102.20440881763527, 102.50501002004007, 102.8056112224449, 103.1062124248497, 103.40681362725451, 103.70741482965931, 104.00801603206413, 104.30861723446894, 104.60921843687375, 104.90981963927855, 105.21042084168337, 105.51102204408818, 105.81162324649299, 106.11222444889779, 106.41282565130261, 106.71342685370742, 107.01402805611222, 107.31462925851703, 107.61523046092185, 107.91583166332666, 108.21643286573146, 108.51703406813627, 108.81763527054109, 109.1182364729459, 109.4188376753507, 109.71943887775551, 110.02004008016031, 110.32064128256513, 110.62124248496994, 110.92184368737475, 111.22244488977955, 111.52304609218437, 111.82364729458918, 112.12424849699399, 112.42484969939879, 112.72545090180361, 113.02605210420842, 113.32665330661322, 113.62725450901803, 113.92785571142285, 114.22845691382766, 114.52905811623246, 114.82965931863727, 115.13026052104209, 115.4308617234469, 115.7314629258517, 116.03206412825651, 116.33266533066133, 116.63326653306613, 116.93386773547094, 117.23446893787575, 117.53507014028057, 117.83567134268537, 118.13627254509018, 118.43687374749499, 118.7374749498998, 119.03807615230461, 119.33867735470942, 119.63927855711422, 119.93987975951904, 120.24048096192385, 120.54108216432866, 120.84168336673346, 121.14228456913828, 121.44288577154309, 121.7434869739479, 122.0440881763527, 122.34468937875752, 122.64529058116233, 122.94589178356713, 123.24649298597194, 123.54709418837675, 123.84769539078157, 124.14829659318637, 124.44889779559118, 124.74949899799599, 125.0501002004008, 125.35070140280561, 125.65130260521042, 125.95190380761522, 126.25250501002004, 126.55310621242485, 126.85370741482966, 127.15430861723446, 127.45490981963928, 127.75551102204409, 128.0561122244489, 128.3567134268537, 128.6573146292585, 128.9579158316633, 129.25851703406815, 129.55911823647295, 129.85971943887776, 130.16032064128257, 130.46092184368737, 130.76152304609218, 131.06212424849699, 131.3627254509018, 131.66332665330663, 131.96392785571143, 132.26452905811624, 132.56513026052104, 132.86573146292585, 133.16633266533066, 133.46693386773546, 133.76753507014027, 134.0681362725451, 134.3687374749499, 134.66933867735472, 134.96993987975952, 135.27054108216433, 135.57114228456913, 135.87174348697394, 136.17234468937875, 136.47294589178355, 136.7735470941884, 137.0741482965932, 137.374749498998, 137.6753507014028, 137.9759519038076, 138.27655310621242, 138.57715430861722, 138.87775551102203, 139.17835671342687, 139.47895791583167, 139.77955911823648, 140.08016032064128, 140.3807615230461, 140.6813627254509, 140.9819639278557, 141.2825651302605, 141.58316633266534, 141.88376753507015, 142.18436873747495, 142.48496993987976, 142.78557114228457, 143.08617234468937, 143.38677354709418, 143.68737474949899, 143.98797595190382, 144.28857715430863, 144.58917835671343, 144.88977955911824, 145.19038076152304, 145.49098196392785, 145.79158316633266, 146.09218436873746, 146.3927855711423, 146.6933867735471, 146.9939879759519, 147.29458917835672, 147.59519038076152, 147.89579158316633, 148.19639278557113, 148.49699398797594, 148.79759519038078, 149.09819639278558, 149.3987975951904, 149.6993987975952, 150.0])
+              .range(['#008000ff', '#028100ff', '#048200ff', '#068300ff', '#088400ff', '#0a8500ff', '#0c8600ff', '#0e8700ff', '#108800ff', '#128900ff', '#148a00ff', '#168b00ff', '#188c00ff', '#1a8d00ff', '#1c8e00ff', '#1e8f00ff', '#209000ff', '#229100ff', '#249200ff', '#269300ff', '#299400ff', '#2b9500ff', '#2d9600ff', '#2f9800ff', '#319900ff', '#339a00ff', '#359b00ff', '#379c00ff', '#399d00ff', '#3b9e00ff', '#3d9f00ff', '#3fa000ff', '#41a100ff', '#43a200ff', '#45a300ff', '#47a400ff', '#49a500ff', '#4ba600ff', '#4da700ff', '#50a800ff', '#52a900ff', '#54aa00ff', '#56ab00ff', '#58ac00ff', '#5aad00ff', '#5cae00ff', '#5eaf00ff', '#60b000ff', '#62b100ff', '#64b200ff', '#66b300ff', '#68b400ff', '#6ab500ff', '#6cb600ff', '#6eb700ff', '#70b800ff', '#72b900ff', '#74ba00ff', '#77bb00ff', '#79bc00ff', '#7bbd00ff', '#7dbe00ff', '#7fbf00ff', '#81c000ff', '#83c100ff', '#85c200ff', '#87c300ff', '#89c400ff', '#8bc500ff', '#8dc700ff', '#8fc800ff', '#91c900ff', '#93ca00ff', '#95cb00ff', '#97cc00ff', '#99cd00ff', '#9bce00ff', '#9ecf00ff', '#a0d000ff', '#a2d100ff', '#a4d200ff', '#a6d300ff', '#a8d400ff', '#aad500ff', '#acd600ff', '#aed700ff', '#b0d800ff', '#b2d900ff', '#b4da00ff', '#b6db00ff', '#b8dc00ff', '#badd00ff', '#bcde00ff', '#bedf00ff', '#c0e000ff', '#c2e100ff', '#c5e200ff', '#c7e300ff', '#c9e400ff', '#cbe500ff', '#cde600ff', '#cfe700ff', '#d1e800ff', '#d3e900ff', '#d5ea00ff', '#d7eb00ff', '#d9ec00ff', '#dbed00ff', '#ddee00ff', '#dfef00ff', '#e1f000ff', '#e3f100ff', '#e5f200ff', '#e7f300ff', '#e9f500ff', '#ebf600ff', '#eef700ff', '#f0f800ff', '#f2f900ff', '#f4fa00ff', '#f6fb00ff', '#f8fc00ff', '#fafd00ff', '#fcfe00ff', '#feff00ff', '#ffff00ff', '#ffff00ff', '#fffe00ff', '#fffd00ff', '#fffc00ff', '#fffc00ff', '#fffb00ff', '#fffa00ff', '#fffa00ff', '#fff900ff', '#fff800ff', '#fff700ff', '#fff700ff', '#fff600ff', '#fff500ff', '#fff400ff', '#fff400ff', '#fff300ff', '#fff200ff', '#fff200ff', '#fff100ff', '#fff000ff', '#ffef00ff', '#ffef00ff', '#ffee00ff', '#ffed00ff', '#ffec00ff', '#ffec00ff', '#ffeb00ff', '#ffea00ff', '#ffea00ff', '#ffe900ff', '#ffe800ff', '#ffe700ff', '#ffe700ff', '#ffe600ff', '#ffe500ff', '#ffe500ff', '#ffe400ff', '#ffe300ff', '#ffe200ff', '#ffe200ff', '#ffe100ff', '#ffe000ff', '#ffdf00ff', '#ffdf00ff', '#ffde00ff', '#ffdd00ff', '#ffdd00ff', '#ffdc00ff', '#ffdb00ff', '#ffda00ff', '#ffda00ff', '#ffd900ff', '#ffd800ff', '#ffd700ff', '#ffd700ff', '#ffd600ff', '#ffd500ff', '#ffd500ff', '#ffd400ff', '#ffd300ff', '#ffd200ff', '#ffd200ff', '#ffd100ff', '#ffd000ff', '#ffd000ff', '#ffcf00ff', '#ffce00ff', '#ffcd00ff', '#ffcd00ff', '#ffcc00ff', '#ffcb00ff', '#ffca00ff', '#ffca00ff', '#ffc900ff', '#ffc800ff', '#ffc800ff', '#ffc700ff', '#ffc600ff', '#ffc500ff', '#ffc500ff', '#ffc400ff', '#ffc300ff', '#ffc200ff', '#ffc200ff', '#ffc100ff', '#ffc000ff', '#ffc000ff', '#ffbf00ff', '#ffbe00ff', '#ffbd00ff', '#ffbd00ff', '#ffbc00ff', '#ffbb00ff', '#ffbb00ff', '#ffba00ff', '#ffb900ff', '#ffb800ff', '#ffb800ff', '#ffb700ff', '#ffb600ff', '#ffb500ff', '#ffb500ff', '#ffb400ff', '#ffb300ff', '#ffb300ff', '#ffb200ff', '#ffb100ff', '#ffb000ff', '#ffb000ff', '#ffaf00ff', '#ffae00ff', '#ffad00ff', '#ffad00ff', '#ffac00ff', '#ffab00ff', '#ffab00ff', '#ffaa00ff', '#ffa900ff', '#ffa800ff', '#ffa800ff', '#ffa700ff', '#ffa600ff', '#ffa600ff', '#ffa400ff', '#ffa300ff', '#ffa200ff', '#ffa000ff', '#ff9f00ff', '#ff9e00ff', '#ff9d00ff', '#ff9b00ff', '#ff9a00ff', '#ff9900ff', '#ff9700ff', '#ff9600ff', '#ff9500ff', '#ff9300ff', '#ff9200ff', '#ff9100ff', '#ff8f00ff', '#ff8e00ff', '#ff8d00ff', '#ff8b00ff', '#ff8a00ff', '#ff8900ff', '#ff8700ff', '#ff8600ff', '#ff8500ff', '#ff8300ff', '#ff8200ff', '#ff8100ff', '#ff7f00ff', '#ff7e00ff', '#ff7d00ff', '#ff7b00ff', '#ff7a00ff', '#ff7900ff', '#ff7700ff', '#ff7600ff', '#ff7500ff', '#ff7300ff', '#ff7200ff', '#ff7100ff', '#ff6f00ff', '#ff6e00ff', '#ff6d00ff', '#ff6b00ff', '#ff6a00ff', '#ff6900ff', '#ff6700ff', '#ff6600ff', '#ff6500ff', '#ff6300ff', '#ff6200ff', '#ff6100ff', '#ff5f00ff', '#ff5e00ff', '#ff5d00ff', '#ff5b00ff', '#ff5a00ff', '#ff5900ff', '#ff5700ff', '#ff5600ff', '#ff5500ff', '#ff5300ff', '#ff5200ff', '#ff5100ff', '#ff5000ff', '#ff4e00ff', '#ff4d00ff', '#ff4c00ff', '#ff4a00ff', '#ff4900ff', '#ff4800ff', '#ff4600ff', '#ff4500ff', '#ff4400ff', '#ff4200ff', '#ff4100ff', '#ff4000ff', '#ff3e00ff', '#ff3d00ff', '#ff3c00ff', '#ff3a00ff', '#ff3900ff', '#ff3800ff', '#ff3600ff', '#ff3500ff', '#ff3400ff', '#ff3200ff', '#ff3100ff', '#ff3000ff', '#ff2e00ff', '#ff2d00ff', '#ff2c00ff', '#ff2a00ff', '#ff2900ff', '#ff2800ff', '#ff2600ff', '#ff2500ff', '#ff2400ff', '#ff2200ff', '#ff2100ff', '#ff2000ff', '#ff1e00ff', '#ff1d00ff', '#ff1c00ff', '#ff1a00ff', '#ff1900ff', '#ff1800ff', '#ff1600ff', '#ff1500ff', '#ff1400ff', '#ff1200ff', '#ff1100ff', '#ff1000ff', '#ff0e00ff', '#ff0d00ff', '#ff0c00ff', '#ff0a00ff', '#ff0900ff', '#ff0800ff', '#ff0600ff', '#ff0500ff', '#ff0400ff', '#ff0200ff', '#ff0100ff', '#ff0000ff', '#ff0000ff', '#fe0000ff', '#fd0000ff', '#fc0000ff', '#fb0000ff', '#fa0000ff', '#f90000ff', '#f80000ff', '#f70000ff', '#f60000ff', '#f50000ff', '#f50000ff', '#f40000ff', '#f30000ff', '#f20000ff', '#f10000ff', '#f00000ff', '#ef0000ff', '#ee0000ff', '#ed0000ff', '#ec0000ff', '#eb0000ff', '#ea0000ff', '#e90000ff', '#e80000ff', '#e70000ff', '#e70000ff', '#e60000ff', '#e50000ff', '#e40000ff', '#e30000ff', '#e20000ff', '#e10000ff', '#e00000ff', '#df0000ff', '#de0000ff', '#dd0000ff', '#dc0000ff', '#db0000ff', '#da0000ff', '#d90000ff', '#d90000ff', '#d80000ff', '#d70000ff', '#d60000ff', '#d50000ff', '#d40000ff', '#d30000ff', '#d20000ff', '#d10000ff', '#d00000ff', '#cf0000ff', '#ce0000ff', '#cd0000ff', '#cc0000ff', '#cb0000ff', '#cb0000ff', '#ca0000ff', '#c90000ff', '#c80000ff', '#c70000ff', '#c60000ff', '#c50000ff', '#c40000ff', '#c30000ff', '#c20000ff', '#c10000ff', '#c00000ff', '#bf0000ff', '#be0000ff', '#bd0000ff', '#bd0000ff', '#bc0000ff', '#bb0000ff', '#ba0000ff', '#b90000ff', '#b80000ff', '#b70000ff', '#b60000ff', '#b50000ff', '#b40000ff', '#b30000ff', '#b20000ff', '#b10000ff', '#b00000ff', '#af0000ff', '#af0000ff', '#ae0000ff', '#ad0000ff', '#ac0000ff', '#ab0000ff', '#aa0000ff', '#a90000ff', '#a80000ff', '#a70000ff', '#a60000ff', '#a50000ff', '#a40000ff', '#a30000ff', '#a20000ff', '#a10000ff', '#a10000ff', '#a00000ff', '#9f0000ff', '#9e0000ff', '#9d0000ff', '#9c0000ff', '#9b0000ff', '#9a0000ff', '#990000ff', '#980000ff', '#970000ff', '#960000ff', '#950000ff', '#940000ff', '#930000ff', '#930000ff', '#920000ff', '#910000ff', '#900000ff', '#8f0000ff', '#8e0000ff', '#8d0000ff', '#8c0000ff', '#8b0000ff']);
+    
+
+    color_map_2718b1613d6206893ded35eb5a11c36f.x = d3.scale.linear()
+              .domain([0.0, 150.0])
+              .range([0, 450 - 50]);
+
+    color_map_2718b1613d6206893ded35eb5a11c36f.legend = L.control({position: 'topright'});
+    color_map_2718b1613d6206893ded35eb5a11c36f.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_2718b1613d6206893ded35eb5a11c36f.legend.addTo(map_ff7351818e02dd93f6f3233f3620fb56);
+
+    color_map_2718b1613d6206893ded35eb5a11c36f.xAxis = d3.svg.axis()
+        .scale(color_map_2718b1613d6206893ded35eb5a11c36f.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([0.0, 37.5, 75.0, 112.5, 150.0]);
+
+    color_map_2718b1613d6206893ded35eb5a11c36f.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_2718b1613d6206893ded35eb5a11c36f.g = color_map_2718b1613d6206893ded35eb5a11c36f.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_2718b1613d6206893ded35eb5a11c36f.g.selectAll("rect")
+        .data(color_map_2718b1613d6206893ded35eb5a11c36f.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_2718b1613d6206893ded35eb5a11c36f.x(color_map_2718b1613d6206893ded35eb5a11c36f.color.domain()[i - 1]) : color_map_2718b1613d6206893ded35eb5a11c36f.x.range()[0],
+            x1: i < color_map_2718b1613d6206893ded35eb5a11c36f.color.domain().length ? color_map_2718b1613d6206893ded35eb5a11c36f.x(color_map_2718b1613d6206893ded35eb5a11c36f.color.domain()[i]) : color_map_2718b1613d6206893ded35eb5a11c36f.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_2718b1613d6206893ded35eb5a11c36f.g.call(color_map_2718b1613d6206893ded35eb5a11c36f.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("PM2.5 Concentration (\u03bcg/m\u00b3)");
+</script>
+</html>

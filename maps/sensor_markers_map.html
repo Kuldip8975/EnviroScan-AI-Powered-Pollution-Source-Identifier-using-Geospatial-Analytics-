@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_745e9ab6ec284d5625b25973b1c55cd1 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+</head>
+<body>
+    
+    
+    <h3 align="center" style="font-size:20px; margin-top:10px;">
+        <b>🌍 AI-EnviroScan: Pollution Sensor Network</b>
+    </h3>
+    
+    
+            <div class="folium-map" id="map_745e9ab6ec284d5625b25973b1c55cd1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_745e9ab6ec284d5625b25973b1c55cd1 = L.map(
+                "map_745e9ab6ec284d5625b25973b1c55cd1",
+                {
+                    center: [18.5204, 73.8567],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": true,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+
+            
+
+        
+    
+            var tile_layer_bac7687b4a7c8dbd16105b7df5159ce9 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_bac7687b4a7c8dbd16105b7df5159ce9.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var tile_layer_929d4ae1782d642f420e8150193d028f = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_929d4ae1782d642f420e8150193d028f.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var tile_layer_0c37947a72bf9ba43b2b6853e148f3c5 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors \u00a9 CARTO",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0c37947a72bf9ba43b2b6853e148f3c5.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var tile_layer_276064d61fa94f664ccdd2f99eefb6c9 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors \u00a9 CARTO",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_276064d61fa94f664ccdd2f99eefb6c9.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var tile_layer_51aa90f3d4c60ff95f4e5de1a33afa29 = L.tileLayer(
+                "https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Map tiles by Stamen Design, CC BY 3.0 \u2014 Map data \u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_51aa90f3d4c60ff95f4e5de1a33afa29.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var tile_layer_b0f4d91611a91361513113d6d5026342 = L.tileLayer(
+                "https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Map tiles by Stamen Design, CC BY 3.0 \u2014 Map data \u00a9 OpenStreetMap contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b0f4d91611a91361513113d6d5026342.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var layer_control_e3a82b28696e82e6f26aadd782a5efc6_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_bac7687b4a7c8dbd16105b7df5159ce9,
+                    "OpenStreetMap" : tile_layer_929d4ae1782d642f420e8150193d028f,
+                    "CartoDB Positron" : tile_layer_0c37947a72bf9ba43b2b6853e148f3c5,
+                    "CartoDB Dark Matter" : tile_layer_276064d61fa94f664ccdd2f99eefb6c9,
+                    "Stamen Terrain" : tile_layer_51aa90f3d4c60ff95f4e5de1a33afa29,
+                    "Stamen Toner" : tile_layer_b0f4d91611a91361513113d6d5026342,
+                },
+                overlays :  {
+                    "\u2705 Good Air Quality" : feature_group_b5505034208ff99b4c55d4c44b5c8069,
+                    "\u26a0\ufe0f Moderate Air Quality" : feature_group_40d455c3f6f84f8e987e49ec1875fa94,
+                    "\ud83d\udea8 Unhealthy Air Quality" : feature_group_40060f42a71eb98cca7e7abbcf4216c5,
+                    "\ud83d\udc80 Hazardous Air Quality" : feature_group_e157d3b2b08ed33855518d6b88ebe8e8,
+                },
+            };
+            let layer_control_e3a82b28696e82e6f26aadd782a5efc6 = L.control.layers(
+                layer_control_e3a82b28696e82e6f26aadd782a5efc6_layers.base_layers,
+                layer_control_e3a82b28696e82e6f26aadd782a5efc6_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var tile_layer_cdfd74a6b710c5fc27d48081b2c3b182 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_0ba37ff2bf9f5d626780228c8bae59f7 = new L.Control.MiniMap(
+                tile_layer_cdfd74a6b710c5fc27d48081b2c3b182,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": false,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_745e9ab6ec284d5625b25973b1c55cd1.addControl(mini_map_0ba37ff2bf9f5d626780228c8bae59f7);
+        
+    
+            var measure_control_c48ea70eb5f529bf468e48817da8b2a2 = new L.Control.Measure(
+                {
+  "position": "topright",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_745e9ab6ec284d5625b25973b1c55cd1.addControl(measure_control_c48ea70eb5f529bf468e48817da8b2a2);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var feature_group_b5505034208ff99b4c55d4c44b5c8069 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_b5505034208ff99b4c55d4c44b5c8069.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var feature_group_40d455c3f6f84f8e987e49ec1875fa94 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_5b5190707430d9ab66e77dee3c8cd121 = L.marker(
+                [18.56, 73.81],
+                {
+}
+            ).addTo(feature_group_40d455c3f6f84f8e987e49ec1875fa94);
+        
+    
+            var icon_9f826df1e309b4f08fda22b9e5324c8b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "yellow",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0443c65c1998781268755c16647e76b5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f45b71ec23e585b1e0789fc6e20faca2 = $(`<div id="html_f45b71ec23e585b1e0789fc6e20faca2" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4>📍 Aundh_Residential</h4>             <div style="background-color: yellow; padding: 5px; border-radius: 5px; color: white; font-weight: bold;">                 Air Quality: Moderate             </div>             <hr>             <b>Pollution Levels:</b><br>             • PM2.5: 28.19 μg/m³ (avg)<br>             • PM2.5: 50.43 μg/m³ (max)<br>             • PM10: 45.69 μg/m³<br>             • NO2: 17.96 μg/m³<br>             <hr>             <b>Weather:</b><br>             • Temperature: 24.0°C<br>             • Wind Speed: 2.9 m/s<br>             <hr>             <b>Area Type:</b> residential<br>             <small>Last updated: 2025-10-30 10:08</small>         </div>         </div>`)[0];
+                popup_0443c65c1998781268755c16647e76b5.setContent(html_f45b71ec23e585b1e0789fc6e20faca2);
+            
+        
+
+        marker_5b5190707430d9ab66e77dee3c8cd121.bindPopup(popup_0443c65c1998781268755c16647e76b5)
+        ;
+
+        
+    
+    
+            marker_5b5190707430d9ab66e77dee3c8cd121.bindTooltip(
+                `<div>
+                     Aundh_Residential - Moderate
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5b5190707430d9ab66e77dee3c8cd121.setIcon(icon_9f826df1e309b4f08fda22b9e5324c8b);
+            
+    
+            var marker_bc198f1115318af0d271792d13d4d092 = L.marker(
+                [18.45, 73.87],
+                {
+}
+            ).addTo(feature_group_40d455c3f6f84f8e987e49ec1875fa94);
+        
+    
+            var icon_9da20e0442cb629396b01d4a42b8739e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "yellow",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_334dd978f43347815659ef29dbac7567 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c66e3bd596754c054dabc46ed2f70734 = $(`<div id="html_c66e3bd596754c054dabc46ed2f70734" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4>📍 Katraj_Suburban</h4>             <div style="background-color: yellow; padding: 5px; border-radius: 5px; color: white; font-weight: bold;">                 Air Quality: Moderate             </div>             <hr>             <b>Pollution Levels:</b><br>             • PM2.5: 33.18 μg/m³ (avg)<br>             • PM2.5: 60.88 μg/m³ (max)<br>             • PM10: 56.68 μg/m³<br>             • NO2: 22.93 μg/m³<br>             <hr>             <b>Weather:</b><br>             • Temperature: 23.5°C<br>             • Wind Speed: 2.7 m/s<br>             <hr>             <b>Area Type:</b> suburban<br>             <small>Last updated: 2025-10-30 10:08</small>         </div>         </div>`)[0];
+                popup_334dd978f43347815659ef29dbac7567.setContent(html_c66e3bd596754c054dabc46ed2f70734);
+            
+        
+
+        marker_bc198f1115318af0d271792d13d4d092.bindPopup(popup_334dd978f43347815659ef29dbac7567)
+        ;
+
+        
+    
+    
+            marker_bc198f1115318af0d271792d13d4d092.bindTooltip(
+                `<div>
+                     Katraj_Suburban - Moderate
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc198f1115318af0d271792d13d4d092.setIcon(icon_9da20e0442cb629396b01d4a42b8739e);
+            
+    
+            var marker_039f402d9ccad7626512e0ec802ebebd = L.marker(
+                [18.51, 73.81],
+                {
+}
+            ).addTo(feature_group_40d455c3f6f84f8e987e49ec1875fa94);
+        
+    
+            var icon_c6ad4f5684a314d3a392221c3f41cc5d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "yellow",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ec4aa99f6405896adfb6cd8bbd3d4c56 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b2cd71cdd562a0b0e47da242c444fcee = $(`<div id="html_b2cd71cdd562a0b0e47da242c444fcee" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4>📍 Kothrud_Residential</h4>             <div style="background-color: yellow; padding: 5px; border-radius: 5px; color: white; font-weight: bold;">                 Air Quality: Moderate             </div>             <hr>             <b>Pollution Levels:</b><br>             • PM2.5: 27.35 μg/m³ (avg)<br>             • PM2.5: 52.83 μg/m³ (max)<br>             • PM10: 46.02 μg/m³<br>             • NO2: 18.1 μg/m³<br>             <hr>             <b>Weather:</b><br>             • Temperature: 23.9°C<br>             • Wind Speed: 3.0 m/s<br>             <hr>             <b>Area Type:</b> residential<br>             <small>Last updated: 2025-10-30 10:08</small>         </div>         </div>`)[0];
+                popup_ec4aa99f6405896adfb6cd8bbd3d4c56.setContent(html_b2cd71cdd562a0b0e47da242c444fcee);
+            
+        
+
+        marker_039f402d9ccad7626512e0ec802ebebd.bindPopup(popup_ec4aa99f6405896adfb6cd8bbd3d4c56)
+        ;
+
+        
+    
+    
+            marker_039f402d9ccad7626512e0ec802ebebd.bindTooltip(
+                `<div>
+                     Kothrud_Residential - Moderate
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_039f402d9ccad7626512e0ec802ebebd.setIcon(icon_c6ad4f5684a314d3a392221c3f41cc5d);
+            
+    
+            var marker_dd1584286136d4f39b44b6552366aab1 = L.marker(
+                [18.52, 73.86],
+                {
+}
+            ).addTo(feature_group_40d455c3f6f84f8e987e49ec1875fa94);
+        
+    
+            var icon_2f98dbb30c67004b07f632e4b1c91d25 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "yellow",
+  "iconColor": "white",
+  "icon": "building",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cadb6a5311ed723a5d20778a057d26ed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ea8773c057f0595ef319332abac64dc2 = $(`<div id="html_ea8773c057f0595ef319332abac64dc2" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4>📍 Pune_City_Center</h4>             <div style="background-color: yellow; padding: 5px; border-radius: 5px; color: white; font-weight: bold;">                 Air Quality: Moderate             </div>             <hr>             <b>Pollution Levels:</b><br>             • PM2.5: 33.38 μg/m³ (avg)<br>             • PM2.5: 61.83 μg/m³ (max)<br>             • PM10: 56.6 μg/m³<br>             • NO2: 22.96 μg/m³<br>             <hr>             <b>Weather:</b><br>             • Temperature: 24.1°C<br>             • Wind Speed: 2.8 m/s<br>             <hr>             <b>Area Type:</b> urban<br>             <small>Last updated: 2025-10-30 10:08</small>         </div>         </div>`)[0];
+                popup_cadb6a5311ed723a5d20778a057d26ed.setContent(html_ea8773c057f0595ef319332abac64dc2);
+            
+        
+
+        marker_dd1584286136d4f39b44b6552366aab1.bindPopup(popup_cadb6a5311ed723a5d20778a057d26ed)
+        ;
+
+        
+    
+    
+            marker_dd1584286136d4f39b44b6552366aab1.bindTooltip(
+                `<div>
+                     Pune_City_Center - Moderate
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dd1584286136d4f39b44b6552366aab1.setIcon(icon_2f98dbb30c67004b07f632e4b1c91d25);
+            
+    
+            feature_group_40d455c3f6f84f8e987e49ec1875fa94.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var feature_group_40060f42a71eb98cca7e7abbcf4216c5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_418c0068d4b5792c1b6bc79e894caf7a = L.marker(
+                [18.53, 73.84],
+                {
+}
+            ).addTo(feature_group_40060f42a71eb98cca7e7abbcf4216c5);
+        
+    
+            var icon_9faf8b7981aaaf3fcfb611a8b1c40361 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_97ed0d1243fe280a7592699e9de82001 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_36801bb3434fe5a93f5628b5af32ea68 = $(`<div id="html_36801bb3434fe5a93f5628b5af32ea68" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4>📍 Shivajinagar_Commercial</h4>             <div style="background-color: orange; padding: 5px; border-radius: 5px; color: white; font-weight: bold;">                 Air Quality: Unhealthy             </div>             <hr>             <b>Pollution Levels:</b><br>             • PM2.5: 41.67 μg/m³ (avg)<br>             • PM2.5: 73.39 μg/m³ (max)<br>             • PM10: 68.44 μg/m³<br>             • NO2: 32.66 μg/m³<br>             <hr>             <b>Weather:</b><br>             • Temperature: 24.1°C<br>             • Wind Speed: 2.8 m/s<br>             <hr>             <b>Area Type:</b> commercial<br>             <small>Last updated: 2025-10-30 10:08</small>         </div>         </div>`)[0];
+                popup_97ed0d1243fe280a7592699e9de82001.setContent(html_36801bb3434fe5a93f5628b5af32ea68);
+            
+        
+
+        marker_418c0068d4b5792c1b6bc79e894caf7a.bindPopup(popup_97ed0d1243fe280a7592699e9de82001)
+        ;
+
+        
+    
+    
+            marker_418c0068d4b5792c1b6bc79e894caf7a.bindTooltip(
+                `<div>
+                     Shivajinagar_Commercial - Unhealthy
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_418c0068d4b5792c1b6bc79e894caf7a.setIcon(icon_9faf8b7981aaaf3fcfb611a8b1c40361);
+            
+    
+            var marker_4c7923bccf6faa26de7f6f73305273ba = L.marker(
+                [18.57, 73.91],
+                {
+}
+            ).addTo(feature_group_40060f42a71eb98cca7e7abbcf4216c5);
+        
+    
+            var icon_fbd10cf75d7dc0b6901bb748b4762421 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_454c448a1efdbcf5bcb3205eacefeffc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_31ae382fbc732333fda37c1cb97fb9c2 = $(`<div id="html_31ae382fbc732333fda37c1cb97fb9c2" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4>📍 Viman_Nagar_Commercial</h4>             <div style="background-color: orange; padding: 5px; border-radius: 5px; color: white; font-weight: bold;">                 Air Quality: Unhealthy             </div>             <hr>             <b>Pollution Levels:</b><br>             • PM2.5: 40.92 μg/m³ (avg)<br>             • PM2.5: 84.26 μg/m³ (max)<br>             • PM10: 71.26 μg/m³<br>             • NO2: 32.14 μg/m³<br>             <hr>             <b>Weather:</b><br>             • Temperature: 24.0°C<br>             • Wind Speed: 2.8 m/s<br>             <hr>             <b>Area Type:</b> commercial<br>             <small>Last updated: 2025-10-30 10:08</small>         </div>         </div>`)[0];
+                popup_454c448a1efdbcf5bcb3205eacefeffc.setContent(html_31ae382fbc732333fda37c1cb97fb9c2);
+            
+        
+
+        marker_4c7923bccf6faa26de7f6f73305273ba.bindPopup(popup_454c448a1efdbcf5bcb3205eacefeffc)
+        ;
+
+        
+    
+    
+            marker_4c7923bccf6faa26de7f6f73305273ba.bindTooltip(
+                `<div>
+                     Viman_Nagar_Commercial - Unhealthy
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4c7923bccf6faa26de7f6f73305273ba.setIcon(icon_fbd10cf75d7dc0b6901bb748b4762421);
+            
+    
+            feature_group_40060f42a71eb98cca7e7abbcf4216c5.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+    
+            var feature_group_e157d3b2b08ed33855518d6b88ebe8e8 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_7d69f1f43ec0a3f7591b9429208e000c = L.marker(
+                [18.5, 73.94],
+                {
+}
+            ).addTo(feature_group_e157d3b2b08ed33855518d6b88ebe8e8);
+        
+    
+            var icon_8b78bd44f85e9b141a0dc49952edaaa4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0ee5c7bed5bb55244ccec7754ba74d7d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cc0d4a5785fdb10bb4a75b43a4d53aac = $(`<div id="html_cc0d4a5785fdb10bb4a75b43a4d53aac" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4>📍 Hadapsar_Industrial</h4>             <div style="background-color: red; padding: 5px; border-radius: 5px; color: white; font-weight: bold;">                 Air Quality: Hazardous             </div>             <hr>             <b>Pollution Levels:</b><br>             • PM2.5: 63.15 μg/m³ (avg)<br>             • PM2.5: 110.49 μg/m³ (max)<br>             • PM10: 102.49 μg/m³<br>             • NO2: 46.98 μg/m³<br>             <hr>             <b>Weather:</b><br>             • Temperature: 24.0°C<br>             • Wind Speed: 2.6 m/s<br>             <hr>             <b>Area Type:</b> industrial<br>             <small>Last updated: 2025-10-30 10:08</small>         </div>         </div>`)[0];
+                popup_0ee5c7bed5bb55244ccec7754ba74d7d.setContent(html_cc0d4a5785fdb10bb4a75b43a4d53aac);
+            
+        
+
+        marker_7d69f1f43ec0a3f7591b9429208e000c.bindPopup(popup_0ee5c7bed5bb55244ccec7754ba74d7d)
+        ;
+
+        
+    
+    
+            marker_7d69f1f43ec0a3f7591b9429208e000c.bindTooltip(
+                `<div>
+                     Hadapsar_Industrial - Hazardous
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7d69f1f43ec0a3f7591b9429208e000c.setIcon(icon_8b78bd44f85e9b141a0dc49952edaaa4);
+            
+    
+            var marker_fa81793e5a2a65f80d95d5cad46cff1a = L.marker(
+                [18.59, 73.74],
+                {
+}
+            ).addTo(feature_group_e157d3b2b08ed33855518d6b88ebe8e8);
+        
+    
+            var icon_62babb8cd690371d5a2599cd2df66b81 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "industry",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4da2fc518840dde509349058ecda0d21 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eae6b098d82e3d7e785e154e5f383bc7 = $(`<div id="html_eae6b098d82e3d7e785e154e5f383bc7" style="width: 100.0%; height: 100.0%;">         <div style="width: 280px;">             <h4>📍 Hinjewadi_Industrial</h4>             <div style="background-color: red; padding: 5px; border-radius: 5px; color: white; font-weight: bold;">                 Air Quality: Hazardous             </div>             <hr>             <b>Pollution Levels:</b><br>             • PM2.5: 58.64 μg/m³ (avg)<br>             • PM2.5: 102.22 μg/m³ (max)<br>             • PM10: 102.68 μg/m³<br>             • NO2: 45.88 μg/m³<br>             <hr>             <b>Weather:</b><br>             • Temperature: 23.9°C<br>             • Wind Speed: 3.0 m/s<br>             <hr>             <b>Area Type:</b> industrial<br>             <small>Last updated: 2025-10-30 10:08</small>         </div>         </div>`)[0];
+                popup_4da2fc518840dde509349058ecda0d21.setContent(html_eae6b098d82e3d7e785e154e5f383bc7);
+            
+        
+
+        marker_fa81793e5a2a65f80d95d5cad46cff1a.bindPopup(popup_4da2fc518840dde509349058ecda0d21)
+        ;
+
+        
+    
+    
+            marker_fa81793e5a2a65f80d95d5cad46cff1a.bindTooltip(
+                `<div>
+                     Hinjewadi_Industrial - Hazardous
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fa81793e5a2a65f80d95d5cad46cff1a.setIcon(icon_62babb8cd690371d5a2599cd2df66b81);
+            
+    
+            feature_group_e157d3b2b08ed33855518d6b88ebe8e8.addTo(map_745e9ab6ec284d5625b25973b1c55cd1);
+        
+</script>
+</html>
